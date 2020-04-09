@@ -1,4 +1,4 @@
-FROM centos:centos8.1.1911 
+FROM centos:centos6.9
 
 RUN yum install epel-release -y \
     && mkdir /download
