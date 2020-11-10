@@ -6,7 +6,7 @@ pipeline {
 	stage ('Create dir') {
 		steps {
 		sh """
-			mkdir /tmp/nagios	
+		   mkdir /tmp/nagios || echo "Dir exists"
 		"""
 		}
 	}
