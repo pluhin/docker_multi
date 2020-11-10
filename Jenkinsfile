@@ -3,6 +3,14 @@ pipeline {
       label 'master'
     }
     stages {
+	stage ('Create dir') {
+		steps {
+		sh """
+			mkdir /tmp/nagios	
+		"""
+		}
+	}
+	
         stage('Download') {
 	parallel {
             stage('Centos_7') {
@@ -11,7 +19,7 @@ pipeline {
 		    filename 'Cent.7.Dockerfile'
                     label 'master'
 		    additionalBuildArgs '--network=host'
-                    args '-u root -v /tmp:/download:rw --network=host'
+                    args '-u root -v /tmp/nagios:/download:rw --network=host'
                 }
             }
             steps {
@@ -26,7 +34,7 @@ pipeline {
                     label 'master'
                     filename 'Cent.6.Dockerfile'
 		    additionalBuildArgs '--network=host'
-                    args '-u root -v /tmp:/download:rw --network=host'
+                    args '-u root -v /tmp/nagios:/download:rw --network=host'
                 }
             }
             steps {
@@ -43,7 +51,7 @@ pipeline {
 		}
 		steps {
 		sh """
-			ls -l /tmp/nagios*	
+			ls -l /tmp/nagios/	
 		"""
 		}
 	}
