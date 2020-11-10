@@ -9,7 +9,7 @@ pipeline {
 		    filename 'Cent.7.Dockerfile'
                     label 'master'
 		    additionalBuildArgs '--network=host'
-                    args '-u root -v /tmp:/download:rw --network=host .'
+                    args '-u root -v /tmp:/download:rw --network=host'
                 }
             }
             steps {
@@ -24,7 +24,7 @@ pipeline {
                     label 'master'
                     filename 'Cent.6.Dockerfile'
 		    additionalBuildArgs '--network=host'
-                    args '-u root -v /tmp:/download:rw'
+                    args '-u root -v /tmp:/download:rw --network=host'
                 }
             }
             steps {
