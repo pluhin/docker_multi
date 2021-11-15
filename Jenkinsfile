@@ -24,7 +24,7 @@ pipeline {
             }
             steps {
                 sh """
-                    yum install -y --downloadonly --downloaddir=/download nagios-plugins-all
+                    yum install -y --downloadonly --downloaddir=/download httpd
                     ls -l /download
                 """
             }}
@@ -40,7 +40,7 @@ pipeline {
             steps {
                 sh """
                     cd /download
-		    dnf download nagios-plugins-all --resolve
+		    dnf download httpd --resolve
                     ls -l /download
                 """
             }}
