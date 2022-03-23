@@ -1,12 +1,12 @@
 pipeline {
-    agent {
-      label 'master'
-    }
+    agent  {
+		label 'master'
+	}
     stages {
 	stage ('Create dir') {
 		steps {
 		sh """
-		   mkdir /tmp/nagios || echo "Dir exists"
+		   mkdir /tmp/httpd || echo "Dir exists"
 		"""
 		}
 	}
@@ -18,8 +18,8 @@ pipeline {
                 dockerfile { 
 		    filename 'Cent.7.Dockerfile'
                     label 'master'
-		    additionalBuildArgs '--network=host'
-                    args '-u root -v /tmp/nagios:/download:rw --network=host'
+		    //additionalBuildArgs '--network=host'
+                    args '-u root -v /tmp/httpd:/download:rw --network=host'
                 }
             }
             steps {
@@ -33,7 +33,7 @@ pipeline {
                 dockerfile {
                     label 'master'
                     filename 'Cent.8.Dockerfile'
-		    additionalBuildArgs '--network=host'
+		    //additionalBuildArgs '--network=host'
                     args '-u root -v /tmp/nagios:/download:rw --network=host'
                 }
             }
@@ -52,7 +52,7 @@ pipeline {
 		}
 		steps {
 		sh """
-			ls -l /tmp/nagios/	
+			ls -l /tmp/httpd/	
 		"""
 		}
 	}
