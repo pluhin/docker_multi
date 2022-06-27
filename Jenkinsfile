@@ -39,8 +39,7 @@ pipeline {
             }
             steps {
                 sh """
-                    cd /download
-		    dnf download httpd --resolve
+                    yum install -y --downloadonly --downloaddir=/download httpd
                     ls -l /download
                 """
             }}
