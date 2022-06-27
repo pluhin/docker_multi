@@ -1,7 +1,7 @@
-FROM centos:centos8
+FROM centos:8
 
-RUN dnf install dnf-plugins-core -y \
-    &&  dnf install epel-release -y \
+RUN yum install epel-release git -y \
+    && yum makecache \
     && mkdir /download
 
 VOLUME ["/download"]
