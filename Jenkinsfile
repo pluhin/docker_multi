@@ -34,7 +34,7 @@ pipeline {
                     label 'master'
                     filename 'Cent.8.Dockerfile'
 		    //additionalBuildArgs '--network=host'
-                    args '-u root -v /tmp/nagios:/download:rw --network=host'
+                    args '-u root -v /tmp/httpd:/download:rw --network=host'
                 }
             }
             steps {
