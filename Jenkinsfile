@@ -1,6 +1,6 @@
 pipeline {
     agent  {
-		label 'master'
+		label 'docker'
 	}
     stages {
 	stage ('Create dir') {
@@ -17,7 +17,7 @@ pipeline {
             agent {
                 dockerfile { 
 		    filename 'Cent.7.Dockerfile'
-                    label 'master'
+                    label 'docker'
 		    //additionalBuildArgs '--network=host'
                     args '-u root -v /tmp/httpd:/download:rw --network=host'
                 }
@@ -31,7 +31,7 @@ pipeline {
 	    stage('Centos_8') {
             agent {
                 dockerfile {
-                    label 'master'
+                    label 'docker'
                     filename 'Cent.8.Dockerfile'
 		    //additionalBuildArgs '--network=host'
                     args '-u root -v /tmp/httpd:/download:rw --network=host'
@@ -47,7 +47,7 @@ pipeline {
         }}
 	stage ('Checking') {
 		agent {
-			label 'master'
+			label 'docker'
 		}
 		steps {
 		sh """
